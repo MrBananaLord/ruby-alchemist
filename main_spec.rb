@@ -2,14 +2,21 @@
 
 require './main.rb'
 
-RSpec.describe 'Main features' do
-  context 'for emoji function without arguments' do
-    it { expect(🍆).to eq('🍆') }
-    it { expect([🍆, 💦]).to eq(['🍆', '💦']) }
+RSpec.describe Emoji do
+  describe '#to_s' do
+    it { expect(🍆.to_s).to eq('🍆') }
+  end
+
+  describe '#inspect' do
+    it { expect(🍆.inspect).to eq('🍆') }
+  end
+
+  describe '#==' do
+    it { expect(🍆 == 🍆).to eq(true) }
   end
 
   context 'for emoji function with arguments' do
-    it { expect(🍆(👌)).to eq('💦') }
-    it { expect(🍆(🔪, 🧂)).to eq(['💩', '👋']) }
+    it { expect(🍆+🍑).to eq(👶) }
+    it { expect((🍆+🍑)+(🍆+👌)).to eq(💥) }
   end
 end

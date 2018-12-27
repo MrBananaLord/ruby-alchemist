@@ -22,6 +22,14 @@ class Emoji
     name
   end
 
+  def <=>(other)
+    name <=> other.name
+  end
+
+  def ==(other)
+    name == other.name
+  end
+
   def +(other)
     raise 'Emoji required' unless other.is_a?(self.class)
 
